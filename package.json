@@ -1,0 +1,22 @@
+{
+  "name": "mocks-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@octokit/rest": "^16.35.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "eval": "^0.1.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
