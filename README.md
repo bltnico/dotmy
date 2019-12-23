@@ -74,7 +74,7 @@ const response = (): {} => ({});
 ### Availables endpoints
 
 | method | path |
-| :------: | :------: | :---------------------------------------- |
+| :------: | :------: |
 |  `GET`   |    `/`    |
 |  `GET`   |    `/user`    |
 |  `GET`   |    `/user/me`    |
