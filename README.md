@@ -45,6 +45,7 @@ const response = () => ({
   },
 });
 
+// @XXX Don't forget to export methods !
 module.exports = {
   request,
   response,
@@ -52,13 +53,13 @@ module.exports = {
 
 ```
 
-Only two optionals methods are availables
+Only two *optionals* methods are availables
 
 **Request**
 
 ```javascript
 const request = (
-  headers: Array<string>,
+  headers: {},
   body: {},
   query: {},
 ): void => {};
