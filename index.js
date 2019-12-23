@@ -22,12 +22,54 @@ app.get('/', (req, res) =>
     .redirect('https://github.com/bltnico/server-mocks-api/blob/master/README.md')
 );
 
+app.get('/:repo', async (req, res) => {
+  try {
+    const d = await octokit.search.code({
+      q: 'extension:js+repo:bltnico/mocks-api',
+    });
+
+    const methods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'];
+
+    const mapEndpoints = (items) =>  {
+      return items
+        .map(item => item.path)
+        .reduce((acc, obj) => {
+          const s = obj.split('/');
+          if (s.length === 1) {
+            acc = [...acc, {
+              method: 'unknow',
+              endpoint: obj,
+            }];
+          }
+
+          const file = s.pop();
+          const m = file.slice(0, -3);
+
+          if (methods.includes(m.toUpperCase())) {
+            acc = [...acc, {
+              method: m.toUpperCase(),
+              endpoint: s.join('/'),
+            }];
+          }
+
+          return acc;
+        }, []);
+    };
+
+    return res.json(mapEndpoints(d.data.items));
+  } catch (e) {
+    return res.json({
+      message: e.message || e,
+    })
+  }
+});
+
 app.use('/:repo/*?', async (req, res) => {
   const start = new Date();
 
   const file = `${req.method.toLowerCase()}.js`;
   const { repo: target } = req.params;
-  const dist = req.params[0];
+  const dist = req.params[0] || '';
 
   const [repo, debugmode] = target.split('.');
 
