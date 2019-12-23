@@ -16,6 +16,12 @@ app.use(bodyParser.json());
 const defaultRequest = () => true;
 const defaultResponse = () => {};
 
+app.get('/', (req, res) =>
+  res
+    .status(301)
+    .redirect('https://github.com/bltnico/server-mocks-api/blob/master/README.md')
+);
+
 app.use('/:repo/*?', async (req, res) => {
   const start = new Date();
 
