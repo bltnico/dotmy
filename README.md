@@ -84,6 +84,32 @@ const response = (): {} => ({});
 |  `DELETE`   |    `/user/1`    |
 |  `POST`   |    `/user/1`    |
 
+
+### 😉 Tips
+
+You can list all endpoints with https://dotmy.herokuapp.com/{repository-name}
+
+```javascript
+{
+  "GET": [
+    "/",
+    "/user",
+    "/user/me",
+    "/user/1",
+  ],
+  "POST": [
+    "/user/me",
+    "/user/1",
+  ],
+  "PUT": [
+    "/user/1",
+  ],
+  "DELETE": [
+    "/user/1",
+  ],
+}
+```
+
 ## 👾 Debug
 
 Only add `.debug` after your repository name
@@ -113,6 +139,6 @@ Only add `.debug` after your repository name
 
 ## 🚧 WIP
 
-- [ ] List repository endpoints
+- [x] List repository endpoints
 - [ ] Switch branch
 - [ ] Payload template
